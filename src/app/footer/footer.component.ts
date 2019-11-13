@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 export interface Author {
   name?: string;
@@ -12,6 +12,7 @@ export interface Author {
 })
 export class FooterComponent implements OnInit {
 
+  @Input() finally;
   public author: Author = {name: 'Piero', surname: 'Vasquez'};
 
   constructor() { }
