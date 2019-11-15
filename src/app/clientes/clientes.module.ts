@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesComponent } from './clientes.component';
 import { FormComponent } from './form.component';
-import {FormsModule} from '@angular/forms';
 import { SharedComponentsModule } from '../shared/shared-components/shared-components.module';
+import { SharedModulesModule } from '../shared/shared-modules.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,8 @@ import { SharedComponentsModule } from '../shared/shared-components/shared-compo
   imports: [
     CommonModule,
     ClientesRoutingModule,
-    FormsModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    SharedModulesModule
   ],
   exports: [
     ClientesComponent

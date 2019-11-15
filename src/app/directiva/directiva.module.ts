@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DirectivaRoutingModule } from './directiva-routing.module';
 import { DirectivaComponent } from './directiva.component';
+import { SharedModulesModule } from '../shared/shared-modules.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { DirectivaComponent } from './directiva.component';
   ],
   imports: [
     CommonModule,
-    DirectivaRoutingModule
+    DirectivaRoutingModule,
+    SharedModulesModule,
   ],
   exports: [
     DirectivaComponent

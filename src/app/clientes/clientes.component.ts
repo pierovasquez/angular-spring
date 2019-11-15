@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../models/cliente';
-import { ClientesService } from '../shared/clientes.service';
+import { ClientesService } from '../shared/shared-services/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -10,6 +10,8 @@ import { ClientesService } from '../shared/clientes.service';
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+
+  texto
 
   constructor(
     private clientesService: ClientesService
