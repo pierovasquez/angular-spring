@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Self } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Self, Input } from '@angular/core';
 import { ControlValueAccessor, Validator, AbstractControl, ValidationErrors, Validators, NgControl } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { ControlValueAccessor, Validator, AbstractControl, ValidationErrors, Val
   ]
 })
 export class CustomInputComponent implements OnInit, ControlValueAccessor, Validator {
+
+  @Input() placeholder: string;
 
   // Para que los ngModels y FormControl puedan acceder a este componente necesita el provider 'NG_VALUE_ACCESOR'
   // Ngmodel injectara el VALUE_ACCESOR_TOKEN para que sea vea si esta injectado en los providers

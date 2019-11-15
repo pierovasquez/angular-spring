@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModulesModule } from '../shared-modules.module';
 import { CommonModule } from '@angular/common';
 import { CustomAddressComponent } from './custom-address/custom-address.component';
+import { AngularMaterialModule } from '../angular-material-modules.module';
 
 @NgModule({
   declarations: [
@@ -12,10 +13,11 @@ import { CustomAddressComponent } from './custom-address/custom-address.componen
   ],
   imports: [
     CommonModule,
-    SharedModulesModule
+    SharedModulesModule,
+    AngularMaterialModule,
   ],
   exports: [
-    CustomInputComponent
+    CustomInputComponent,
   ]
 })
 export class SharedComponentsModule { }

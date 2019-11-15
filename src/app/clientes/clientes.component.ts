@@ -11,17 +11,24 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
 
-  texto
-
   constructor(
     private clientesService: ClientesService
   ) { }
 
   ngOnInit() {
+    this.getClientes();
+    this.configureAgGrid();
+  }
+
+  private getClientes() {
     this.clientesService.getClientes()
-    .subscribe(clientes => {
-      this.clientes = clientes;
-    });
+      .subscribe(clientes => {
+        this.clientes = clientes;
+      });
+  }
+
+  private configureAgGrid() {
+    
   }
 
 }

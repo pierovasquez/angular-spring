@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesComponent } from './clientes.component';
-import { FormComponent } from './form.component';
+import { FormComponent } from './form/form.component';
 import { SharedComponentsModule } from '../shared/shared-components/shared-components.module';
 import { SharedModulesModule } from '../shared/shared-modules.module';
+import { AgGridModule } from '@ag-grid-community/angular';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SharedModulesModule } from '../shared/shared-modules.module';
     CommonModule,
     ClientesRoutingModule,
     SharedComponentsModule,
-    SharedModulesModule
+    SharedModulesModule,
+    AgGridModule.withComponents([])
   ],
   exports: [
     ClientesComponent

@@ -1,8 +1,14 @@
-<input type="text" #input
-  (input)="onChange($event.target.value)"
-  (blur)="onTouched()"
-  [disabled]="disabled"  
->
-<div class="error" *ngIf="controlDir && !controlDir.control.valid">
-  This field is invalid
-</div>
+<mat-form-field>
+  <input  #input
+    matInput
+    [placeholder]="placeholder"
+    type="text"
+    (input)="onChange($event.target.value)"
+    (blur)="onTouched()"
+    [disabled]="disabled"  
+  >
+  <mat-error *ngIf="controlDir && !controlDir.control.valid">
+    This field is invalid
+  </mat-error>
+</mat-form-field>
+
