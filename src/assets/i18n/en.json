@@ -1,0 +1,18 @@
+{
+    "header": {
+        "services": "Services",
+        "projects": "Projects",
+        "customers": "Clients",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "services": {
+        "clients": {
+            "name": "Name",
+            "surname": "Surname",
+            "email": "Email",
+            "date": "Date",
+            "add-new-client": "Create new client"
+        }
+    }
+}

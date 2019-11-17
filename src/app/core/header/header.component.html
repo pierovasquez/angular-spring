@@ -1,0 +1,22 @@
+<header>
+  <img class="hipster-logo" src="../../assets/images/fitness.jpg" alt="hipster-logo">
+  <nav>
+    <ul class="nav__links">
+      <li><a href="/">{{'header.services' | translate}}</a></li>
+      <li>
+        <a routerLink="/directivas">{{'header.projects' | translate}}</a>
+      </li>
+      <li>
+        <a routerLink="/clientes">{{'header.customers' | translate}}</a>
+      </li>
+      <li><a href="#">{{'header.about' | translate}}</a></li>
+    </ul>
+  </nav>
+  <a href="#" class="cta"><button>{{'header.contact' | translate}}</button></a>
+  <select #langSelect (change)="translateService.use(langSelect.value)">
+    <ng-container *ngFor="let lang of translateService.getLangs()">
+        <option [value]="lang">{{lang}}</option>
+    </ng-container>
+    
+  </select>
+</header>

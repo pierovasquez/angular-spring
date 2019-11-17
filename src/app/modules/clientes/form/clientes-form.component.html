@@ -1,0 +1,17 @@
+<div class="card bg-dar text-white">
+  <div class="card-header">{{titulo}}</div>
+  <div class="card-body">
+    <form (ngSubmit)="createCliente()">
+      <app-custom-input [(ngModel)]="cliente.nombre" name="nombre"></app-custom-input>
+      <app-custom-input [(ngModel)]="cliente.apellido" name="apellido"></app-custom-input>
+      <app-custom-input [(ngModel)]="cliente.email" name="email"></app-custom-input>
+    
+     <!-- <app-custom-input #nombre ngModel name="nombre"></app-custom-input>
+     <app-custom-input #apellido ngModel name="apellido"></app-custom-input>
+     <app-custom-input #email ngModel name="email"></app-custom-input> -->
+      <div>
+        <app-custom-button mat-button type="button">Submit</app-custom-button>
+      </div>
+    </form>
+  </div>
+</div>

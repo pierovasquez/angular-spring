@@ -5,11 +5,13 @@ import { SharedModulesModule } from '../shared-modules.module';
 import { CommonModule } from '@angular/common';
 import { CustomAddressComponent } from './custom-address/custom-address.component';
 import { AngularMaterialModule } from '../angular-material-modules.module';
+import { CustomButtonComponent } from './custom-button/custom-button.component';
 
 @NgModule({
   declarations: [
     CustomInputComponent,
-    CustomAddressComponent
+    CustomAddressComponent,
+    CustomButtonComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,8 @@ import { AngularMaterialModule } from '../angular-material-modules.module';
   ],
   exports: [
     CustomInputComponent,
+    CustomButtonComponent,
+    CommonModule
   ]
 })
 export class SharedComponentsModule { }

@@ -1,0 +1,18 @@
+{
+    "header": {
+        "services": "Servicios",
+        "projects": "Projectos",
+        "customers": "Clientes",
+        "about": "Quienes somos",
+        "contact": "Contacto"
+    },
+    "services": {
+        "clients": {
+            "name": "Nombre",
+            "surname": "Apellido",
+            "email": "Email",
+            "date": "Fecha",
+            "add-new-client": "Añadir nuevo cliente"
+        }
+    }
+}
