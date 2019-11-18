@@ -5,7 +5,7 @@ import { ColDef, GridOptions } from '@ag-grid-community/core';
 import { AllCommunityModules } from '@ag-grid-community/all-modules';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ClientesService } from 'src/app/shared/shared-services/clientes.service';
+import { ClienteService } from 'src/app/shared/shared-services/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -26,7 +26,7 @@ export class ClientesComponent implements OnInit {
   showForm = false;
 
   constructor(
-    private clientesService: ClientesService,
+    private clientesService: ClienteService,
     private translateService: TranslateService,
     private router: Router
   ) {

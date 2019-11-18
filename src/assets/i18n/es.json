@@ -12,7 +12,11 @@
             "surname": "Apellido",
             "email": "Email",
             "date": "Fecha",
-            "add-new-client": "Añadir nuevo cliente"
+            "add-new-client": "Añadir nuevo cliente",
+            "sweet-alert": {
+                "new-client": "Nuevo cliente",
+                "create-success": "Cliente {{value}} creado con exito!"
+            }
         }
     }
 }
