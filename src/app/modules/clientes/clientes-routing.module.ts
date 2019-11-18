@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'form',
         component: ClientesFormComponent
+      },
+      {
+        path: 'form/:id',
+        component: ClientesFormComponent
       }
     ]
   }
@@ -28,4 +32,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class  ClientesRoutingModule { }
+export class ClientesRoutingModule { }
