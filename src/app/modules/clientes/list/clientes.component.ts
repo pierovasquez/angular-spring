@@ -6,6 +6,7 @@ import { AllCommunityModules } from '@ag-grid-community/all-modules';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/shared/shared-services/clientes.service';
+import { ClientesEditButtonComponent } from './clientes-button.component';
 
 @Component({
   selector: 'app-clientes',
@@ -57,6 +58,7 @@ export class ClientesComponent implements OnInit {
       `${clients}surname`,
       `${clients}email`,
       `${clients}date`,
+      `${clients}actions`,
     ])
       .pipe(take(1))
       .subscribe(res => {
@@ -65,6 +67,10 @@ export class ClientesComponent implements OnInit {
           { headerName: res[`${clients}surname`], headerTooltip: res[`${clients}surname`], field: 'apellido', sortable: true },
           { headerName: res[`${clients}email`], headerTooltip: res[`${clients}email`], field: 'email', sortable: true },
           { headerName: res[`${clients}date`], headerTooltip: res[`${clients}date`], field: 'createAt', sortable: true },
+          {
+            headerName: res[`${clients}actions`], headerTooltip: res[`${clients}actions`],
+            cellRendererFramework: ClientesEditButtonComponent
+          },
         ];
       });
   }

@@ -9,17 +9,21 @@ import { SharedComponentsModule } from 'src/app/shared/shared-components/shared-
 import { SharedModulesModule } from 'src/app/shared/shared-modules.module';
 import { DataEditGuard } from 'src/app/core/guards/data-edit.guard';
 import { ClientesFormComponent } from './form/clientes-form.component';
+import { ClientesEditButtonComponent } from './list/clientes-button.component';
 
 @NgModule({
   declarations: [
     ClientesComponent,
-    ClientesFormComponent
+    ClientesFormComponent,
+    ClientesEditButtonComponent,
   ],
   imports: [
     ClientesRoutingModule,
     SharedComponentsModule,
     SharedModulesModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([
+      ClientesEditButtonComponent
+    ]),
     TranslateModule.forChild()
   ],
   exports: [

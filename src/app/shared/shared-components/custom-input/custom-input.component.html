@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input  #input
+  <input #input
     matInput
     [placeholder]="placeholder"
     type="text"
@@ -7,8 +7,9 @@
     (blur)="onTouched()"
     [disabled]="disabled"  
   >
-  <mat-error *ngIf="controlDir && !controlDir.control.valid">
+  <mat-error *ngIf="control && !control.valid">
     This field is invalid
   </mat-error>
 </mat-form-field>
+
 

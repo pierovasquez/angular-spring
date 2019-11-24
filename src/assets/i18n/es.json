@@ -12,6 +12,7 @@
             "surname": "Apellido",
             "email": "Email",
             "date": "Fecha",
+            "actions": "Acciones",
             "add-new-client": "Añadir nuevo cliente",
             "sweet-alert": {
                 "new-client": "Nuevo cliente",

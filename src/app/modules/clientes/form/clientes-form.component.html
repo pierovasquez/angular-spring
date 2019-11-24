@@ -1,15 +1,19 @@
 <div class="card bg-dar text-white">
   <div class="card-header">{{titulo}}</div>
   <div class="card-body">
-    <form (ngSubmit)="createCliente()">
-      <app-custom-input [(ngModel)]="cliente.nombre" name="nombre"></app-custom-input>
-      <app-custom-input [(ngModel)]="cliente.apellido" name="apellido"></app-custom-input>
-      <app-custom-input [(ngModel)]="cliente.email" name="email"></app-custom-input>
-    
-     <!-- <app-custom-input #nombre ngModel name="nombre"></app-custom-input>
-     <app-custom-input #apellido ngModel name="apellido"></app-custom-input>
-     <app-custom-input #email ngModel name="email"></app-custom-input> -->
+    <form #clientesForm="ngForm" (ngSubmit)="createCliente()">
+      <div class="clientes-form-inputs-field">
+        <app-custom-input [control]="clientesForm?.controls?.nombre"
+          [placeholder]="'services.clients.name' | translate" [(ngModel)]="cliente.nombre" name="nombre">
+        </app-custom-input>
+        <app-custom-input [placeholder]="'services.clients.surname' | translate" [(ngModel)]="cliente.apellido"
+          name="apellido"></app-custom-input>
+        <app-custom-input placeholder="{{'services.clients.email' | translate}}" [(ngModel)]="cliente.email"
+          name="email"></app-custom-input>
+      </div>
+      {{cliente | json}}
       <div>
+        <app-custom-button mat-button (click)="console(clientesForm)" type="button">Console</app-custom-button>
         <app-custom-button mat-button type="button">Submit</app-custom-button>
       </div>
     </form>

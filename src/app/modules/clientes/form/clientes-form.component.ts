@@ -6,6 +6,7 @@ import swal from 'sweetalert2';
 import { TranslateService } from '@ngx-translate/core';
 import { map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -36,6 +37,11 @@ export class ClientesFormComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this._ngUnsubscribe.next();
     this._ngUnsubscribe.complete();
+  }
+
+  console(form: NgForm) {
+    console.log(form);
+
   }
 
   private checkIfClientAndLoadIt(): void {

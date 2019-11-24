@@ -9,6 +9,8 @@ export class CustomButtonComponent implements OnInit {
 
   @Input() disabled: boolean;
 
+  @Input() type;
+
   constructor() { }
 
   ngOnInit() {
