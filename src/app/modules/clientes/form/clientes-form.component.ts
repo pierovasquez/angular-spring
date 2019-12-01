@@ -22,6 +22,7 @@ export class ClientesFormComponent implements OnInit, OnDestroy {
   public cliente: Cliente = new Cliente();
 
   private _ngUnsubscribe: Subject<any> = new Subject<any>();
+  private _isEditing: boolean;
 
   constructor(
     private clienteService: ClienteService,
@@ -51,12 +52,36 @@ export class ClientesFormComponent implements OnInit, OnDestroy {
     ).subscribe(id => {
       if (id) {
         this.loadClient(+id);
+        this._isEditing = true;
+      } else {
+        this._isEditing = false;
       }
     });
 
   }
   private loadClient(id: number) {
     this.clienteService.getCliente(id).subscribe((cliente: Cliente) => this.cliente = cliente);
+    console.log('string', this.isEditing);
+  }
+
+  confirm() {
+    swal.fire({
+      title: this.isEditing
+        ? this.translateService.instant('services.clients.sweet-alert.confirm.update-client-title')
+        : this.translateService.instant('services.clients.sweet-alert.confirm.create-client-title'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: this.isEditing
+        ? this.translateService.instant('services.clients.sweet-alert.confirm.update-client-confirm')
+        : this.translateService.instant('services.clients.sweet-alert.confirm.create-client-confirm'),
+      cancelButtonColor: '#d33',
+      cancelButtonText: this.translateService.instant('services.clients.sweet-alert.confirm.cancel')
+    }).then(result => {
+      if (result.value) {
+        this.isEditing ? this.updateCliente() : this.createCliente();
+      }
+    });
   }
 
   createCliente(): void {
@@ -68,5 +93,20 @@ export class ClientesFormComponent implements OnInit, OnDestroy {
         'success'
       );
     });
+  }
+
+  updateCliente(): void {
+    this.clienteService.update(this.cliente).subscribe(cliente => {
+      this.router.navigate(['/shell/clientes']);
+      swal.fire(
+        this.translateService.instant('services.clients.sweet-alert.update-client'),
+        this.translateService.instant('services.clients.sweet-alert.update-success', { value: cliente.nombre }),
+        'success'
+      );
+    });
+  }
+
+  get isEditing() {
+    return this._isEditing;
   }
 }

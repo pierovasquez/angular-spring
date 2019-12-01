@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject, forwardRef } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
-import { ColDef, GridOptions } from '@ag-grid-community/core';
+import { ColDef, GridOptions, ICellRendererParams, IAfterGuiAttachedParams } from '@ag-grid-community/core';
 import { AllCommunityModules } from '@ag-grid-community/all-modules';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/shared/shared-services/clientes.service';
-import { ClientesEditButtonComponent } from './clientes-button.component';
+import { ICellRendererAngularComp } from '@ag-grid-community/angular';
+import { Cliente } from 'src/app/shared/models/cliente';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clientes',
@@ -22,7 +23,7 @@ export class ClientesComponent implements OnInit {
   modules = AllCommunityModules;
 
   isDirty = false;
-  title = 'asd'
+  title = 'asd';
 
   showForm = false;
 
@@ -40,11 +41,13 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     this.getClientes();
-    this.configureAgGrid();
   }
 
   private getClientes() {
-    this.clientes = this.clientesService.getClientes();
+    this.clientesService.getClientes().subscribe(clientes => {
+      this.clientes = clientes;
+      this.configureAgGrid();
+    });
   }
 
   private configureAgGrid() {
@@ -75,12 +78,88 @@ export class ClientesComponent implements OnInit {
       });
   }
 
+  // ACTIONS
+
+  deleteClient(client: Cliente) {
+    this.clientesService.delete(client.id).subscribe(response => {
+      swal.fire(
+        this.translateService.instant('services.clients.sweet-alert.delete-success', { value: client.nombre }),
+        '', 'success'
+      );
+
+      this.clientes = this.clientes.filter(cliente => cliente !== client);
+    });
+  }
+
   onAddClientSelected() {
     this.showForm = !this.showForm;
   }
 
   openForm() {
     this.router.navigate(['shell/clientes/form']);
+  }
+
+}
+
+
+
+@Component({
+  selector: 'app-clientes-edit-button',
+  template: `
+        <app-custom-button (click)="onClick()">Edit</app-custom-button>
+        <app-custom-button (click)="onDelete()">Delete</app-custom-button>
+    `,
+  styles: [``]
+})
+export class ClientesEditButtonComponent implements ICellRendererAngularComp {
+
+  private cliente: Cliente;
+  private rowIndex: number;
+  private clientes: Cliente[];
+
+  constructor(
+    private router: Router,
+    private translateService: TranslateService,
+    @Inject(forwardRef(() => ClientesComponent)) private clientesComponent: ClientesComponent
+  ) {
+  }
+
+  refresh(params: any): boolean {
+    console.log('refresh', params);
+    return false;
+  }
+  agInit(params: ICellRendererParams): void {
+    this.cliente = params.data;
+    this.rowIndex = params.rowIndex;
+  }
+  afterGuiAttached?(params?: IAfterGuiAttachedParams): void {
+    if (params) {
+      console.log('attached', params);
+    }
+  }
+  onClick() {
+    this.router.navigate(['/shell/clientes/form', this.cliente.id]);
+  }
+
+  onDelete() {
+    swal.fire({
+      title: this.translateService.instant('services.clients.sweet-alert.confirm.delete-client-title'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: this.translateService.instant('services.clients.sweet-alert.confirm.delete-client-confirm'),
+      cancelButtonColor: '#d33',
+      cancelButtonText: this.translateService.instant('services.clients.sweet-alert.confirm.cancel')
+    }).then(result => {
+      if (result.value) {
+        this.deleteClient();
+      }
+    });
+  }
+
+  private deleteClient() {
+    this.clientesComponent.deleteClient(this.cliente);
+
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="card bg-dar text-white">
   <div class="card-header">{{titulo}}</div>
   <div class="card-body">
-    <form #clientesForm="ngForm" (ngSubmit)="createCliente()">
+    <form #clientesForm="ngForm" (ngSubmit)="clientesForm.valid ? confirm() : ''">
       <div class="clientes-form-inputs-field">
         <app-custom-input [control]="clientesForm?.controls?.nombre"
           [placeholder]="'services.clients.name' | translate" [(ngModel)]="cliente.nombre" name="nombre">
@@ -14,7 +14,7 @@
       {{cliente | json}}
       <div>
         <app-custom-button mat-button (click)="console(clientesForm)" type="button">Console</app-custom-button>
-        <app-custom-button mat-button type="button">Submit</app-custom-button>
+        <app-custom-button mat-button type="submit">{{'services.clients.form.save' | translate}}</app-custom-button>
       </div>
     </form>
   </div>

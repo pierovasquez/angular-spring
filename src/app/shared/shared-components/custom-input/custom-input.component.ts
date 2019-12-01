@@ -20,6 +20,8 @@ import { ControlValueAccessor, Validator, AbstractControl, ValidationErrors, Val
 })
 export class CustomInputComponent implements OnInit, ControlValueAccessor, Validator {
 
+  @ViewChild('input', { static: false, read: ElementRef }) input: ElementRef;
+
   @Input() get control() {
     return this._control;
   }
@@ -29,7 +31,6 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor, Valid
 
   @Input() placeholder: string;
 
-  private value: string;
   private _control;
   onChange: () => void;
   onTouched: () => void;
@@ -37,7 +38,7 @@ export class CustomInputComponent implements OnInit, ControlValueAccessor, Valid
   disabled: boolean;
 
   writeValue(val: any): void {
-    this.value = val ? val : '';
+    this.input.nativeElement.value = val ? val : '';
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;

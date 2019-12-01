@@ -16,7 +16,22 @@
             "add-new-client": "Añadir nuevo cliente",
             "sweet-alert": {
                 "new-client": "Nuevo cliente",
-                "create-success": "Cliente {{value}} creado con exito!"
+                "create-success": "Cliente {{value}} creado con exito!",
+                "update-client": "Edición correcta",
+                "update-success": "Cliente {{value}} actualizado con exito!",
+                "delete-success": "Cliente {{value}} borrado con exito!",
+                "confirm": {
+                    "update-client-title": "¿Actualizar cliente?",
+                    "create-client-title": "¿Crear cliente?",
+                    "delete-client-title": "¿Borrar el cliente?",
+                    "update-client-confirm": "Si, actualizar",
+                    "create-client-confirm": "Si, crear",
+                    "delete-client-confirm": "Si, borrar",
+                    "cancel": "Cancelar"
+                }
+            },
+            "form": {
+                "save": "Guardar"
             }
         }
     }

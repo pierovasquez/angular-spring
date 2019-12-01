@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClientesRoutingModule } from './clientes-routing.module';
-import { ClientesComponent } from './list/clientes.component';
+import { ClientesComponent, ClientesEditButtonComponent } from './list/clientes.component';
 import { AgGridModule } from '@ag-grid-community/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedComponentsModule } from 'src/app/shared/shared-components/shared-components.module';
 import { SharedModulesModule } from 'src/app/shared/shared-modules.module';
 import { DataEditGuard } from 'src/app/core/guards/data-edit.guard';
 import { ClientesFormComponent } from './form/clientes-form.component';
-import { ClientesEditButtonComponent } from './list/clientes-button.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +28,7 @@ import { ClientesEditButtonComponent } from './list/clientes-button.component';
   exports: [
     ClientesComponent
   ],
-  providers: []
+  providers: [],
+
 })
 export class ClientesModule { }

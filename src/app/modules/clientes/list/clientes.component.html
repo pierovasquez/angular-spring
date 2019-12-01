@@ -2,7 +2,7 @@
   <div class="card-header">Clientes</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de clientes</h5>
-    <ag-grid-angular style="width: 80%; height: 500px;" class="ag-theme-balham" [modules]="modules" [rowData]="clientes | async" [columnDefs]="colDef"></ag-grid-angular>
+    <ag-grid-angular style="width: 80%; height: 500px;" class="ag-theme-balham" [modules]="modules" [rowData]="clientes" [columnDefs]="colDef"></ag-grid-angular>
     <!-- <app-custom-button (click)="openForm()" type="button">{{'services.clients.add-new-client' | translate}}</app-custom-button> -->
     <app-custom-button [routerLink]="['../form']" type="button">{{'services.clients.add-new-client' | translate}}</app-custom-button>
   </div>
