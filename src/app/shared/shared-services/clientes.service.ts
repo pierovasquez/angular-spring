@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Cliente } from '../models/cliente';
+import { IResponseClient } from '../models/response-client';
 
 @Injectable({
   providedIn: 'root'
@@ -29,14 +30,20 @@ export class ClienteService {
   }
 
   create(cliente: Cliente): Observable<Cliente> {
-    return this.http.post<Cliente>(this.urlEndPoint, cliente, { headers: this.httpHeaders });
+    return this.http.post<IResponseClient>(this.urlEndPoint, cliente, { headers: this.httpHeaders })
+      .pipe(
+        map(responseClient => responseClient.cliente as Cliente)
+      );
   }
 
   update(cliente: Cliente): Observable<Cliente> {
-    return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeaders});
+    return this.http.put<IResponseClient>(`${this.urlEndPoint}/15`, cliente, { headers: this.httpHeaders })
+      .pipe(
+        map(responseClient => responseClient.cliente as Cliente)
+      );
   }
 
   delete(id: number): Observable<Cliente> {
-    return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders});
+    return this.http.delete<Cliente>(`${this.urlEndPoint}/${id}`, { headers: this.httpHeaders });
   }
 }

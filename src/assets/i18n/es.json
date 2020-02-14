@@ -28,6 +28,10 @@
                     "create-client-confirm": "Si, crear",
                     "delete-client-confirm": "Si, borrar",
                     "cancel": "Cancelar"
+                },
+                "error": {
+                    "create": "Error al crear",
+                    "update": "Error al actualizar"
                 }
             },
             "form": {

@@ -92,7 +92,10 @@ export class ClientesFormComponent implements OnInit, OnDestroy {
         this.translateService.instant('services.clients.sweet-alert.create-success', { value: cliente.nombre }),
         'success'
       );
-    });
+    },
+      (error) => swal.fire(
+        this.translateService.instant('services.clients.sweet-alert.error.create'),
+        `${error.error.message}`, 'error'));
   }
 
   updateCliente(): void {
@@ -103,7 +106,10 @@ export class ClientesFormComponent implements OnInit, OnDestroy {
         this.translateService.instant('services.clients.sweet-alert.update-success', { value: cliente.nombre }),
         'success'
       );
-    });
+    },
+      (error) => swal.fire(
+        this.translateService.instant('services.clients.sweet-alert.error.update'),
+        `${error.error.mensaje}`, 'error'));
   }
 
   get isEditing() {
